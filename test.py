@@ -2,21 +2,31 @@ import sys
 import os
 
 
+try:
+
+    file_path = sys.argv[1]
+
+    if(os.path.exists(sys.argv[1]) == False):
+
+        print("Cannot find file " + sys.argv[1])
+
+        file_path = input("Please enter the name of config file: ")
+
+        sys.exit()
+
+except IndexError:
+
+    file_path = input("Please enter the name of the config file: ")
 
 
-if(os.path.exists(sys.argv[1]) == False):
-
-    print("Cannot find file " + sys.argv[1])
-
-    sys.exit()
 
 
-file = open(sys.argv[1],'r')
+file = open(file_path,'r')
 
 data = file.readlines()
 
 
-print("Using the file "+ sys.argv[1] + " for config")
+print("Using the file "+ file_path + " for config")
 
 
 for i in range(len(data)):
